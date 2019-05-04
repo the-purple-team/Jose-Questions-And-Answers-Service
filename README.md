@@ -1,13 +1,12 @@
-# Project Name
+# Product Questions and Answers
 
 > Project description
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/the-purple-team/bruce-service.git
+  - https://github.com/the-purple-team/maddie-front-end-capstone.git
+  - https://github.com/the-purple-team/bruce-service.git
 
 ## Table of Contents
 
@@ -17,7 +16,7 @@
 
 ## Usage
 
-> Some usage instructions
+>
 
 ## Requirements
 
