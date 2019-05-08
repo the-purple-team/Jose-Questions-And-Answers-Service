@@ -19,6 +19,16 @@
 
 > Some usage instructions
 
+## API
+  ## GET all questions/answers per productId
+/questions/:productId
+
+  ## POST question
+/questions/add
+
+  ## PATCH the number of votes (add or subtract)
+/questions/votes/:productId
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
