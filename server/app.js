@@ -1,11 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
-
-
+const path = require('path');
 const app = express();
+
 const PORT = 3000;
 
+// USE middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// SERVER static files
+app.use(express.static(path.join(__dirname + "/../client/dist")))
 
 app.get('/questions/:productId', (req, res) => {
   // gets all questions for specific productId
