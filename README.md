@@ -1,6 +1,6 @@
 # Product Questions and Answers
 
-> Project description
+> This service
 
 ## Related Projects
 
@@ -17,6 +17,16 @@
 ## Usage
 
 >
+
+## API
+  ## GET all questions/answers per productId
+/questions/:productId
+
+  ## POST question
+/questions/add
+
+  ## PATCH the number of votes (add or subtract)
+/questions/votes/:productId
 
 ## Requirements
 
