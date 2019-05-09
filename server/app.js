@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
+const db = require('../server/database/schema.js')
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // USE middleware
 app.use(bodyParser.json());
