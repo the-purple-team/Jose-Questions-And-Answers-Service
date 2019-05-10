@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/the-purple-team/bruce-service
+  - https://github.com/the-purple-team/maddie-front-end-capstone
+  - https://github.com/the-purple-team/bradyService
 
 <!-- ## Table of Contents
 
