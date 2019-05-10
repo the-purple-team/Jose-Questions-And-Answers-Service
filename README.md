@@ -1,6 +1,6 @@
 # Product Questions and Answers
 
-> This service
+> This service will provide questions and answer when a product is selected.
 
 ## Related Projects
 
@@ -9,19 +9,19 @@
   - https://github.com/teamName/repo
   - https://github.com/teamName/repo
 
-## Table of Contents
+<!-- ## Table of Contents
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
-1. [Development](#development)
+1. [Development](#development) -->
 
-## Usage
-
-> Some usage instructions
 
 ## API
-  ## GET all questions/answers per productId
-/product/:productId
+  ## GET all questions per product
+/products/:productId
+
+succesful data:
+```sh
 {
   "product": 1,
   "questions": [
@@ -36,9 +36,11 @@
     }
   ]
 }
+```
 
-  ## PATCH the number of votes (add or subtract)
-/:productId/:question_id
+  ## PATCH the number of votes for a given question (add or subtract)
+/questions/:question_id
+successful patch will return the product questions
 
 ## Requirements
 
