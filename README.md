@@ -37,19 +37,11 @@ succesful data:
 }
 ```
 
-  ## PATCH the number of votes for a given question (add or subtract)
-/questions/:question_id
-successful patch will return the product questions
-
-## API
-  ## GET all questions/answers per productId
-/questions/:productId
-
-  ## POST question
-/questions/add
-
-  ## PATCH the number of votes (add or subtract)
+## PATCH the number of votes (add or subtract)
 /questions/votes/:productId
+
+## POST question
+/questions/add
 
 ## Requirements
 
