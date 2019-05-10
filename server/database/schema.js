@@ -27,9 +27,23 @@ const questionNAnswersSchema = mongoose.Schema({
 // to use schema, it must be converted to a Model
 const questions = mongoose.model('questions', questionNAnswersSchema);
 
+const getProductQuestions = (id, callback) => {
+	// make query to mongodb to find the Product by id
+	// id = Number(id);
+	questions.find({ product: id}, (err, data) => {
+			if (err) {
+					callback(err);
+			}
+			// return array containing all data
+			callback(data);
+	});
+};
+
+
+
 
 module.exports = {
   db,
   questions,
-  getQuestions
+  getProductQuestions
 }
