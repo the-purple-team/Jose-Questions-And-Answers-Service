@@ -1,10 +1,6 @@
 # Product Questions and Answers
 
-<<<<<<< HEAD
-> This service
-=======
 > This service will provide questions and answer when a product is selected.
->>>>>>> feature
 
 ## Related Projects
 
