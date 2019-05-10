@@ -1,5 +1,9 @@
 const mongo = require('../schema');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature
 const fakeProductData = [
   { "product": 1, "questions": [{ "question_id": 1, "question": "Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla?", "answers": [{ "user": "Ermanno", "answer": "Integer ac leo. Pellentesque ultrices mattis odio.", "createdAt": "2018-12-08 00:23:14" }, { "user": "Izabel", "answer": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.", "createdAt": "2019-02-22 13:30:05" }, { "user": "Etti", "answer": "Aenean auctor gravida sem.", "createdAt": "2018-08-05 17:23:39" }, { "user": "Jessee", "answer": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.", "createdAt": "2018-08-24 20:30:21" }], "votes": 0 }] },
   { "product": 2, "questions": [{ "question_id": 1, "question": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit?", "answers": [{ "user": "Cordula", "answer": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor.", "createdAt": "2019-02-01 23:20:49" }, { "user": "Kissiah", "answer": "Nunc rhoncus dui vel sem.", "createdAt": "2018-09-04 13:13:08" }, { "user": "Guglielmo", "answer": "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.", "createdAt": "2018-10-01 07:53:23" }], "votes": 0 }] },
