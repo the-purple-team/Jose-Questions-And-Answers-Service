@@ -13,17 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // SERVER static files
 app.use(express.static(path.join(__dirname + "/../client/dist")))
 
-<<<<<<< HEAD
-app.get('/questions/:productId', (req, res) => {
-  // gets all questions for specific productId
-});
-
-app.post('/questions/add', (req, res) => {
-  // creates a question and adds to productID
-});
-
-app.patch('/questions/votes/:productId', (req, res) => {
-=======
 app.get('/product/:productId', (req, res) => {
   // gets all questions for specific productId
 });
@@ -33,7 +22,6 @@ app.get('/product/:productId', (req, res) => {
 // });
 
 app.patch('/questions/:question_id', (req, res) => {
->>>>>>> feature
   // modifies the votes property of a question depending on the value
 
 });
