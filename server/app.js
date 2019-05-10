@@ -17,9 +17,7 @@ app.get('/product/:productId', (req, res) => {
   // gets all questions for specific productId
 });
 
-// app.post('/questions/add', (req, res) => {
-//   // creates a question and adds to productID
-// });
+
 
 app.patch('/questions/:question_id', (req, res) => {
   // modifies the votes property of a question depending on the value

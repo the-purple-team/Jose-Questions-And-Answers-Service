@@ -1,6 +1,6 @@
 # Product Questions and Answers
 
-> This service will provide questions and answer when a product is selected.
+> This service will provide questions and answers when a product is selected. Questions can be ranked.
 
 ## Related Projects
 
