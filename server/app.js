@@ -18,15 +18,21 @@ app.use(express.static(path.join(__dirname + "/../client/dist")))
 
 app.get('/products/:productId', (req, res) => {
   // gets all questions for specific productId
-  console.log(req.params.productId,  `BODY FROM REQ`);
   db.getProductQuestions(req.params.productId, (data) => {
     res.send(data);
-  });
-    // res.send(`done`);
+	});
 });
 
-app.patch('api/questions/:question_id', (req, res) => {
+app.post('/ask/vote/question/:question_id', (req, res) => {
   // modifies the votes property of a question depending on the value
+	//    click value must have products/:productId
+	// the body will have the productId & vote value
+	const question_Id = req.params.question_id;
+	db.updateQuestionVote(question_Id, req.body, (data) => {
+		res.send(data);
+	});
+	// console.log(req.body, `BODY`)
+  // res.send(`RECEIVED RESPONSE`);
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

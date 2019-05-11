@@ -39,11 +39,32 @@ const getProductQuestions = (id, callback) => {
 	});
 };
 
+const updateQuestionVote = (question_Id, body, callback) => {
+	const productId = body.product;
+	const vote = body.vote;
+	// find productID
+	questions.findById(productId, (err, doc) => {
+		// iterate through the questions and find question_id
+		if (err) {
+			callback(err);
+		}
+		doc.questions.forEach(question => {
 
+			if (question.question_id === Number(question_Id)) {
+				console.log(question.votes, `VOTE`);
+				question.votes = question.votes + Number(vote);
+				// callback(question);
+				doc.save()
+				callback(doc);
+			}
+		});
+	});
+};
 
 
 module.exports = {
   db,
   questions,
-  getProductQuestions
+	getProductQuestions,
+	updateQuestionVote
 }
