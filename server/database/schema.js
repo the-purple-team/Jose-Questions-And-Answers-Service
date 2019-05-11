@@ -55,7 +55,7 @@ const updateQuestionVote = (question_Id, body, callback) => {
 				question.votes = question.votes + Number(vote);
 				// callback(question);
 				doc.save()
-				callback(doc);
+				callback(question);
 			}
 		});
 	});
