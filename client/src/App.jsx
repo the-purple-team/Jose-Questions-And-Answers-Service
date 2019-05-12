@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import axios from 'axios';
+import dummy from '../../dummydata.js';
+import moment from 'moment';
 class Questions extends React.Component {
   constructor(props) {
     super(props);
@@ -9,15 +11,43 @@ class Questions extends React.Component {
     }
   }
 
+  componentDidMount() {
+    axios.get(`/products/${1}`)
+      .then(response => {
+        console.log(response, `this is is going well`)
+        this.setState( {db: response} );
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+
 
   render() {
     return (
       <div>
-        <h1>Questions will go here</h1>
-        <div>{this.state.test}</div>
+        <hr />
+        <h2>Customer questions & answers</h2>
+				<div className="question">
+					{this.props.dummy.data.questions.map(questions => 
+						<div>
+							Question: {questions.question}
+							{questions.answers.map(answer =>
+								<div>
+								<div>Answer: {answer.answer}</div>
+								<div>By {answer.user} on {moment(answer.createdAt).format('LL')}</div>
+								</div>
+							)}
+						</div>
+						
+					)}
+
+				</div>
+				<hr />
       </div>
     )
   }
 }
 
-ReactDOM.render(<Questions />, document.getElementById('App'));
+ReactDOM.render(<Questions dummy={dummy}/>, document.getElementById('App'));

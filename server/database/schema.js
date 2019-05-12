@@ -35,7 +35,7 @@ const getProductQuestions = (id, callback) => {
 					callback(err);
 			}
 			// return array containing all data
-			callback(data);
+			callback(data[0]);
 	});
 };
 

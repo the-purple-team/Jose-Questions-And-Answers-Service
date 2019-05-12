@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 // SERVER static files
 app.use(express.static(path.join(__dirname + "/../client/dist")))
-
+//webpack --config webpack.config.js"
 
 app.get('/products/:productId', (req, res) => {
   // gets all questions for specific productId
