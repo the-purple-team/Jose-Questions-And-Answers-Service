@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
-
 const app = express();
 const db = require('../server/database/schema.js')
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,7 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 // SERVER static files
 app.use(express.static(path.join(__dirname + "/../client/dist")))
-//webpack --config webpack.config.js"
+
+
+//allows to serve react files whenever the url Route is changed in the client side.
+app.use('/:id',express.static(path.join(__dirname + "/../client/dist")))
+
 
 app.get('/products/:productId', (req, res) => {
   // gets all questions for specific productId
@@ -22,6 +26,7 @@ app.get('/products/:productId', (req, res) => {
     res.send(data);
 	});
 });
+
 
 app.post('/ask/vote/question/:question_id', (req, res) => {
   // modifies the votes property of a question depending on the value

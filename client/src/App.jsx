@@ -7,29 +7,43 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      test: 'What are you doing here?'
+      test: 'What are you doing here?',
+      product: ''
     }
   }
 
   componentDidMount() {
-    axios.get(`/products/${1}`)
-      .then(response => {
-        console.log(response, `this is is going well`)
-        this.setState( {db: response} );
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    let id = window.location.pathname
+    console.log(window.location.pathname, `CURRENT WINDOW PATH NAME`)
+      axios.get(`/products${id}`)
+        .then(response => {
+          console.log(response, `this is is going well`)
+          this.setState( {db: response} );
+        })
+        .catch(err => {
+          console.log(err)
+        });
   }
 
-
+  onChange(e) {
+    const id = e.target.value;
+    this.setState({ product: id });
+  }
 
   render() {
     return (
       <div>
-        <hr />
-        <h2>Customer questions & answers</h2>
-				<div className="question">
+        <hr className="a-divider-normal"/>
+        <h2 className="a-color-base askWidgetHeader">Customer questions & answers</h2>
+				<div className="askWidgetQuestions askLiveSearchHide">
+          <div className="a-row a-spacing-small a-spacing-top-base">
+            <input className="askSearchForm" 
+            type="Text" 
+            placeholder="Enter A Product ID" 
+            value={this.state.product}
+            
+            />
+          </div>
 					{this.props.dummy.data.questions.map(questions => 
 						<div>
 							Question: {questions.question}
@@ -40,7 +54,6 @@ class Questions extends React.Component {
 								</div>
 							)}
 						</div>
-						
 					)}
 
 				</div>
