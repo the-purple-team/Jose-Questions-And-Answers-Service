@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import dummy from '../../dummydata.js';
+// import dummy from '../../dummydata.js';
 import moment from 'moment';
+import Search from './components/Search.jsx';
+
 class Questions extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class Questions extends React.Component {
 
   componentDidMount() {
     let id = window.location.pathname
-    // console.log(window.location.pathname, `CURRENT WINDOW PATH NAME`)
+    if (id !== '/') {
       axios.get(`/products${id}`)
         .then(response => {
           console.log(response, `this is is going well`)
@@ -23,29 +25,26 @@ class Questions extends React.Component {
         .catch(err => {
           console.log(err)
         });
+    }
   }
 
-  onChange(e) {
-    const id = e.target.value;
-    this.setState({ product: id });
-  }
 
   render() {
     const {product} = this.state;
-    console.log(JSON.stringify(product) === '{}');
     return (
       <div>
         <hr className="a-divider-normal"/>
         <h2 className="a-color-base askWidgetHeader">Customer questions & answers</h2>
-
+        <Search />
 				<div className="askWidgetQuestions askLiveSearchHide">
           { JSON.stringify(product) === '{}' ? (
             <h3>Enter a product ID in url</h3>
           ) : (
-            <div className="a-row a-spacing-small a-spacing-top-base">
+            <div className="a-row a-spacing-small a-spacing-top-base" style={{textAlign: 'center'}}>
             {this.state.product.questions.map(questions => 
               <div>
-                Question: {questions.question}
+                <div>Votes:{questions.votes}</div>
+                <div className="">Question: {questions.question}</div>
                 {questions.answers.map(answer =>
                   <div>
                   <div>Answer: {answer.answer}</div>
@@ -69,4 +68,4 @@ class Questions extends React.Component {
   }
 }
 
-ReactDOM.render(<Questions dummy={dummy}/>, document.getElementById('App'));
+ReactDOM.render(<Questions />, document.getElementById('App'));
