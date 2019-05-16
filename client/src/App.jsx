@@ -4,6 +4,9 @@ import axios from 'axios';
 // import dummy from '../../dummydata.js';
 import moment from 'moment';
 import Search from './components/Search.jsx';
+import './main.css';
+
+
 
 class Questions extends React.Component {
   constructor(props) {
