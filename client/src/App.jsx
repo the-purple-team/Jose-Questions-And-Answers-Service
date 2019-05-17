@@ -37,7 +37,7 @@ class Questions extends React.Component {
     return (
       <div>
         <hr className="a-divider-normal"/>
-        <h2 className="a-color-base askWidgetHeader">Customer questions & answers</h2>
+        <h2 className="a-color-base askWidgetHeader">Customers questions & answers</h2>
         <Search />
 				<div className="askWidgetQuestions askLiveSearchHide">
           { JSON.stringify(product) === '{}' ? (
@@ -50,7 +50,7 @@ class Questions extends React.Component {
                 <div className="">Question: {questions.question}</div>
                 {questions.answers.map(answer =>
                   <div>
-                  <div>Answer: {answer.answer}</div>
+                  <div><b>Answer:</b> {answer.answer}</div>
                   <div>By {answer.user} on {moment(answer.createdAt).format('LL')}</div>
                   </div>
                 )}

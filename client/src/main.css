@@ -1,4 +1,20 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .css-test {
 	background-color: red;
 	padding:10px;
 }
+
+.a-span12 {
+	width: 80%;
+}
+
+.askWidgetQuestions {
+	width: 70%;
+	height: auto;
+	display: flex;
+}
+
