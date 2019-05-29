@@ -33,6 +33,8 @@ app.post('/ask/vote/question/:question_id', (req, res) => {
 	//    click value must have products/:productId
 	// the body will have the productId & vote value
 	const question_Id = req.params.question_id;
+	console.log(question_Id, 	`1 LOGGED`)
+	console.log(req.body, `2 body logged`)
 	db.updateQuestionVote(question_Id, req.body, (data) => {
 		res.send(data);
 	});

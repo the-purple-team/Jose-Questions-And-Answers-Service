@@ -40,12 +40,14 @@ const getProductQuestions = (id, callback) => {
 };
 
 const updateQuestionVote = (question_Id, body, callback) => {
-	const productId = body.product;
+	const _id = body.product;
 	const vote = body.vote;
 	// find productID
+	console.log(_id, `LINE 36 SCHEMA`)
 	questions.findById(productId, (err, doc) => {
 		// iterate through the questions and find question_id
 		if (err) {
+			console.log(err, `LINE 50`)
 			callback(err);
 		}
 		doc.questions.forEach(question => {
