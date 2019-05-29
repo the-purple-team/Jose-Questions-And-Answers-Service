@@ -43,11 +43,11 @@ const updateQuestionVote = (question_Id, body, callback) => {
 	const _id = body.product;
 	const vote = body.vote;
 	// find productID
-	console.log(_id, `LINE 36 SCHEMA`)
-	questions.findById(productId, (err, doc) => {
+	console.log(question_Id, `LINE 46`)
+	console.log(_id, `LINE 47`)
+	questions.findById(_id, (err, doc) => {
 		// iterate through the questions and find question_id
 		if (err) {
-			console.log(err, `LINE 50`)
 			callback(err);
 		}
 		doc.questions.forEach(question => {

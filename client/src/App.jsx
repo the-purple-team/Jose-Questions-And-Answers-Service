@@ -14,6 +14,7 @@ class Questions extends React.Component {
     this.state = {
       product: {}
     }
+    this.changeVote = this.changeVote.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,32 @@ class Questions extends React.Component {
     }
   }
 
+  changeVote(event) {
+    event.preventDefault()
+    const product_id = event.target.elements.product_id.value;
+    const question_id = event.target.elements.question_id.value;
+    const voteValue = event.target.elements.voteValue.value;
+
+    // makes POST request to update the question's vote count
+    axios.post(`/ask/vote/question/${question_id}`,
+      {
+        vote: voteValue,
+	      product: product_id
+      })
+        .then((response) => {
+          const questionId = response.data.question_id;
+          const voteValue = response.data.votes;
+          const questions = [...this.state.product.questions];
+          // find the question_id and update the vote value
+          questions.forEach(question => {
+            if (question.question_id === questionId) {
+              question.votes = voteValue;
+            }
+          });
+          this.setState({ [questions]: questions});
+        });
+
+  }
 
   render() {
     const {product} = this.state;
@@ -47,7 +74,33 @@ class Questions extends React.Component {
             <div className="a-row a-spacing-small a-spacing-top-base" style={{textAlign: 'center'}}>
             {this.state.product.questions.map(questions => 
               <div>
-                <div key={questions.question_id}>Votes:{questions.votes}</div>
+                <div className="vote-count">
+                  <ul className="vote voteaxios">
+                    <li className="up-vote">
+                      <form className="up" onSubmit={this.changeVote}>
+                        <input name="voteValue" value="1" type="hidden"/>
+                        <input name="product_id" value={this.state.product._id} type="hidden"/>
+                        <input name="question_id" value={questions.question_id} type="hidden" />
+                        <input type="submit" value="vote up" className="arrow-up"/>
+                      </form>
+                    </li>
+                    <li className="vote-value">
+                      <span>{questions.votes}</span>
+                      <span>
+                        <br></br>
+                        votes
+                      </span>
+                    </li>
+                    <li className="down-vote">
+                      <form className="down" onSubmit={this.changeVote}>
+                        <input name="voteValue" value="-1" type="hidden"/>
+                        <input name="product_id" value={this.state.product._id} type="hidden"/>
+                        <input name="question_id" value={questions.question_id} type="hidden" />
+                        <input type="submit" value="vote down" className="arrow-down" />
+                      </form>
+                    </li>
+                  </ul>
+                </div>
                 <div className="">Question: {questions.question}</div>
                 {questions.answers.map(answer =>
                   <div>
