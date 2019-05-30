@@ -30,13 +30,25 @@ const questions = mongoose.model('questions', questionNAnswersSchema);
 const getProductQuestions = (id, callback) => {
 	// make query to mongodb to find the Product by id
 	// id = Number(id);
-	questions.find({ product: id}, (err, data) => {
+
+	//----
+	// questions.find({ product: id}, (err, data) => {
+	// 		if (err) {
+	// 				callback(err);
+	// 		}
+	// 		// return array containing all data
+	// 		callback(data[0]);
+	// });
+	//-----\
+
+	questions.find(
+		{product: id}).sort({votes: -1}).exec((err, data) => {
 			if (err) {
-					callback(err);
+				callback(err);
 			}
-			// return array containing all data
+			console.log(data[0]);
 			callback(data[0]);
-	});
+		});
 };
 
 const updateQuestionVote = (question_Id, body, callback) => {

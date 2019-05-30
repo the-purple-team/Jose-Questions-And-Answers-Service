@@ -60,6 +60,7 @@ class Questions extends React.Component {
 
   render() {
     const {product} = this.state;
+    
     // questios array
     const  data = this.state.product.questions; 
     return (
