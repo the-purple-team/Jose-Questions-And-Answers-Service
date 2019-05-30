@@ -41,12 +41,14 @@ const getProductQuestions = (id, callback) => {
 	// });
 	//-----\
 
-	questions.find(
-		{product: id}).sort({votes: -1}).exec((err, data) => {
+	questions.find({product: id}).sort({"questions.votes": -1}).exec((err, data) => {
 			if (err) {
 				callback(err);
 			}
-			console.log(data[0]);
+			// console.log(data[0]);
+			data[0].questions.sort((a, b) => {
+				return b.votes - a.votes;
+			})
 			callback(data[0]);
 		});
 };

@@ -23,6 +23,7 @@ class Questions extends React.Component {
       axios.get(`/products${id}`)
         .then(response => {
           console.log(response, `this is is going well`)
+          console.log(response.data.questions[0].votes)
           this.setState( {product: response.data} );
         })
         .catch(err => {
