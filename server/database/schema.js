@@ -41,7 +41,7 @@ const getProductQuestions = (id, callback) => {
 	// });
 	//-----\
 
-	questions.find({product: id}).sort({"questions.votes": -1}).exec((err, data) => {
+	questions.find({product: id}).exec((err, data) => {
 			if (err) {
 				callback(err);
 			}
@@ -57,8 +57,6 @@ const updateQuestionVote = (question_Id, body, callback) => {
 	const _id = body.product;
 	const vote = body.vote;
 	// find productID
-	console.log(question_Id, `LINE 46`)
-	console.log(_id, `LINE 47`)
 	questions.findById(_id, (err, doc) => {
 		// iterate through the questions and find question_id
 		if (err) {
@@ -67,7 +65,6 @@ const updateQuestionVote = (question_Id, body, callback) => {
 		doc.questions.forEach(question => {
 
 			if (question.question_id === Number(question_Id)) {
-				console.log(question.votes, `VOTE`);
 				question.votes = question.votes + Number(vote);
 				// callback(question);
 				doc.save()

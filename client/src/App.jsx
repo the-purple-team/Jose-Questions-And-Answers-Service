@@ -23,7 +23,6 @@ class Questions extends React.Component {
       axios.get(`/products${id}`)
         .then(response => {
           console.log(response, `this is is going well`)
-          console.log(response.data.questions[0].votes)
           this.setState( {product: response.data} );
         })
         .catch(err => {
@@ -61,7 +60,6 @@ class Questions extends React.Component {
 
   render() {
     const {product} = this.state;
-    
     // questios array
     const  data = this.state.product.questions; 
     return (
@@ -74,7 +72,14 @@ class Questions extends React.Component {
             <h3>Enter a product ID in url</h3>
           ) : (
             <div className="a-row a-spacing-small a-spacing-top-base" style={{textAlign: 'center'}}>
-            {this.state.product.questions.map(questions => 
+            {this.state.product.questions.length === 0 ? (
+              <div className="askQuestionExample">
+                <div className="askTypicalExample">Typical questions asked about products:</div>
+                <div className="askExampleQuestion">&nbsp;-&nbsp; Is the item durable?</div>
+                <div className="askExampleQuestion">&nbsp;-&nbsp; Is this item easy to use?</div>
+                <div className="askExampleQuestion">&nbsp;-&nbsp; What are the dimensions of this item?</div>
+              </div>
+            ) : this.state.product.questions.map(questions => 
               <div>
                 <div className="vote-count">
                   <ul className="vote voteaxios">
@@ -112,9 +117,8 @@ class Questions extends React.Component {
                 )}
               </div>
             )}
-          </div>
-            
-            )}
+            </div>
+          )}
 
           
 
