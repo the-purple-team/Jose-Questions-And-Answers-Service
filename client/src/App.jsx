@@ -64,10 +64,16 @@ class Questions extends React.Component {
     const  data = this.state.product.questions; 
     return (
       <div>
+        <div id="ask-btf_feature_div">
+          <div> </div>
+        
         <hr className="a-divider-normal"/>
         <h2 className="a-color-base askWidgetHeader">Customers questions & answers</h2>
-        <Search questions={data}/>
 				<div className="askWidgetQuestions askLiveSearchHide">
+          <div>
+            <Search questions={data}/>
+            
+          </div>
           { JSON.stringify(product) === '{}' ? (
             <h3>Enter a product ID in url</h3>
           ) : (
@@ -109,6 +115,9 @@ class Questions extends React.Component {
                   </ul>
                 </div>
                 <div className="">Question: {questions.question}</div>
+                {/* {if answers length is greater than 1, show first answer,
+                  create a clickable link 'see more answer (number of answer hidden),} */}
+                
                 {questions.answers.map(answer =>
                   <div>
                   <div key={answer._id}><b>Answer:</b> {answer.answer}</div>
@@ -123,10 +132,11 @@ class Questions extends React.Component {
           
 
 				</div>
+        
+          </div>
 
-
-				<hr />
-      </div>
+          <hr class="a-spacing-large a-divider-normal" />
+        </div>
     )
   }
 }

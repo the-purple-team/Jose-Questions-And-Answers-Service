@@ -22,6 +22,7 @@ class Search extends Component {
 			let question = questions[i].question.split(' ');
 			// console.log(question, `line 22`);
 			// if the query is found in the question str
+			console.log(questions[i], `LINE 25 OF QUESTIONS[i]`)
 			if (question.includes(query)) {
 				// insert the question into the result's array
 				result.push(questions[i]);
