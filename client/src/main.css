@@ -17,15 +17,70 @@ div {
 	width: 80%;
 } */
 
+
+.askInlineWidget {
+  word-wrap: break-word;
+}
+
+.a-spacing-top-base {
+  margin-top: 14px!important;
+}
+
+.a-row {
+  width: 100%;
+}
+
+.a-row .a-span12, .a-span12, .a-ws .a-row .a-ws-span12, .a-ws .a-ws-span12 {
+  width: 100%;
+  margin-right: 0;
+}
+.a-search .a-icon-search {
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  left: 10px;
+}
+.a-search {
+  position: relative;
+  display: inline-block;
+}
+
+.a-icon-search {
+  opacity: .55;
+  width: 13px;
+  height: 13px;
+  background-position: -271px -86px;
+}
+.a-icon, .a-link-emphasis:after {
+  background-size: 400px 900px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+}
 .askWidgetQuestions {
-	width: 70%;
-	height: auto;
-	display: flex;
+  max-width: 1000px;
+}
+.a-row:after, .a-row:before {
+  display: table;
+  content: "";
+  line-height: 0;
+  font-size: 0;
+}
+
+.a-row:after {
+    clear: both;
+}
+
+.a-row:after, .a-row:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
 }
 
 .arrow-up {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 13px solid transparent;
   border-right: 13px solid transparent;
   border-top : 0px;
@@ -33,8 +88,8 @@ div {
 }
 
 .arrow-down {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 13px solid transparent;
 	border-right: 13px solid transparent;
 	border-bottom: 0px;
@@ -49,4 +104,50 @@ hr {
   border-top: 1px solid #e7e7e7;
   line-height: 19px;
   margin-top: 0;
+}
+
+.a-spacing-base {
+  margin-bottom: 14px!important;
+}
+
+.a-fixed-left-grid {
+  position: relative;
+}
+
+.a-spacing-small, .a-ws .a-ws-spacing-small {
+  margin-bottom: 10px!important;
+}
+
+/* before */
+.a-fixed-left-grid-inner:after, .a-fixed-left-grid-inner:before, .a-fixed-right-grid-inner:after, .a-fixed-right-grid-inner:before {
+  display: table;
+  content: "";
+  line-height: 0;
+  font-size: 0;
+}
+
+.a-fixed-left-grid .a-col-right {
+  width: 100%;
+  padding-left: 3.5%;
+}
+.a-fixed-left-grid-col, .a-fixed-right-grid-col {
+  position: relative;
+  overflow: visible;
+  zoom: 1;
+  min-height: 1px;
+}
+/* after */
+.a-fixed-left-grid .a-fixed-left-grid-inner::after {
+  clear: left;
+}
+
+.a-fixed-left-grid-inner:after, .a-fixed-right-grid-inner:after {
+  clear: both;
+}
+
+.a-fixed-left-grid-inner:after, .a-fixed-left-grid-inner:before, .a-fixed-right-grid-inner:after, .a-fixed-right-grid-inner:before {
+  display: table;
+  content: "";
+  line-height: 0;
+  font-size: 0;
 }
