@@ -81,6 +81,7 @@ class Questions extends React.Component {
                 ) : (
                     <div className="a-section a-spacing-none askBtfTopQuestionsContainer" style={{ textAlign: 'center' }}>
                       <span className="askTopQandA">
+                        
                         <div className="a-section askTeaserQuestions">
                           {this.state.product.questions.length === 0 ? (
                             <div className="askQuestionExample">
@@ -94,7 +95,7 @@ class Questions extends React.Component {
                               <div className="a-fixed-left-grid-inner" style={{ "paddingLeft": "65px" }}>
                                 <div className="a-fixed-left-grid-col a-col-left" style={{ "width": "65px", "marginLeft": "-65px", "float": "left" }}>
                                   <ul className="vote voteaxios">
-                                    <li className="up-vote">
+                                    <li>
                                       <form className="up" onSubmit={this.changeVote}>
                                         <input name="voteValue" value="1" type="hidden" />
                                         <input name="product_id" value={this.state.product._id} type="hidden" />
