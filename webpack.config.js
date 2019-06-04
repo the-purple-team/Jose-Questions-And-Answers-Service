@@ -17,7 +17,13 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         include: SRC_DIR,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+           options: {
+            "presets": [
+              "@babel/preset-env",
+              "@babel/preset-react"
+            ]
+           }
         }
       },
       {

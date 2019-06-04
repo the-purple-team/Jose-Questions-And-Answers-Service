@@ -13,31 +13,29 @@ class Search extends Component {
 	// updates the search value
 	handleChange(e) {
 		let query = e.target.value;
-		this.setState({ search: query });
-		// ut
-		console.log(this.state.search, `line 18`)
-		const { questions } = this.props;
-		let result = [...this.state.searchResult];
-		for (let i = 0; i < questions.length; i++) {
-			let question = questions[i].question.split(' ');
-			// console.log(question, `line 22`);
-			// if the query is found in the question str
-			console.log(questions[i], `LINE 25 OF QUESTIONS[i]`)
-			if (question.includes(query)) {
-				// insert the question into the result's array
-				result.push(questions[i]);
-				console.log(questions, `line 26`)
-				console.log(query, `LINE 28`)
+		console.log(query, `SEARCH VALUE`)
+		this.setState({ search: query }, ()=> {
+			let result = [...this.state.searchResult]; 	
+			console.log(result, `EMPTY RESULT?`)
+			const { questions } = this.props;
+
+			for (let i = 0; i < questions.length; i++) {
+				let question = questions[i].question.split(' ');
+				// console.log(question, `line 22`);
+				// if the query is found in the question str
+				if (question.includes(query) && !result.includes(questions[i].question_id)) {
+					// insert the question into the result's array if it isn't already included
+					console.log(questions[i], `question with query`)
+					result.push(questions[i]);
+				}
 			}
-
-		}
-		if (result.length) {
-			this.setState({ searchResult: result });
-			console.log(this.state, `result of search query`);
-		}
+			
+			if (result.length) {
+				this.setState({ searchResult: result });
+				console.log(this.state, `result of search query`);
+			}
+		}); // setting state
 	}
-
-	// determine if the search query is found in the question string
 
 	render() {
 		return (

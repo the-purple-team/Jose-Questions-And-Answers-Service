@@ -12,7 +12,8 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {}
+      product: {},
+      searchRequest: false
     }
     this.changeVote = this.changeVote.bind(this);
   }
@@ -22,7 +23,7 @@ class Questions extends React.Component {
     if (id !== '/') {
       axios.get(`/products${id}`)
         .then(response => {
-          console.log(response, `this is is going well`)
+          // console.log(response, `this is is going well`)
           this.setState({ product: response.data });
         })
         .catch(err => {
@@ -55,7 +56,10 @@ class Questions extends React.Component {
         });
         this.setState({ [questions]: questions });
       });
+  }
 
+  searchQueryAndQuestions(searchResult) {
+    // if this function is inbo
   }
 
   render() {
@@ -91,11 +95,11 @@ class Questions extends React.Component {
                               <div className="askExampleQuestion">&nbsp;-&nbsp; What are the dimensions of this item?</div>
                             </div>
                           ) : this.state.product.questions.map(questions =>
-                            <div className="a-fixed-left-grid a-spacing-base">
+                            <div key ={questions._id} className="a-fixed-left-grid a-spacing-base">
                               <div className="a-fixed-left-grid-inner" style={{ "paddingLeft": "65px" }}>
                                 <div className="a-fixed-left-grid-col a-col-left" style={{ "width": "65px", "marginLeft": "-65px", "float": "left" }}>
                                   <ul className="vote voteaxios">
-                                    <li>
+                                    <li key={"up"}>
                                       <form className="up" onSubmit={this.changeVote}>
                                         <input name="voteValue" value="1" type="hidden" />
                                         <input name="product_id" value={this.state.product._id} type="hidden" />
@@ -103,14 +107,14 @@ class Questions extends React.Component {
                                         <input type="submit" value="vote up" className="arrow-up" />
                                       </form>
                                     </li>
-                                    <li className="vote-value">
+                                    <li className="vote-value" key={"votes"}>
                                       <span>{questions.votes}</span>
                                       <span>
                                         <br></br>
                                         votes
                                 </span>
                                     </li>
-                                    <li className="down-vote">
+                                    <li className="down-vote" key={"down"}>
                                       <form className="down" onSubmit={this.changeVote}>
                                         <input name="voteValue" value="-1" type="hidden" />
                                         <input name="product_id" value={this.state.product._id} type="hidden" />
@@ -124,31 +128,22 @@ class Questions extends React.Component {
 
                                 <div className="a-fixed-left-grid-col a-col-right" style={{ "paddingLeft": "1%", "float": "left" }}>
 
-                                  <div key={questions.question_id} className="a-fixed-left-grid a-spacing-small">
+                                  <div className="a-fixed-left-grid a-spacing-small">
                                     <div className="a-fixed-left-grid-inner" style={{ "paddingLeft": "100px" }}>
                                       <div className="a-fixed-left-grid-col a-col-left" style={{ "width": "100px", "marginLeft": "-100px", "float": "left" }}>
                                         <span className="a-text-bold">Question:</span>
                                       </div>
                                       <div className="a-fixed-left-grid-col a-col-right" style={{ "paddingLeft": "0%", "float": "left" }}>
-
                                         <span className="a-declarative">{questions.question}</span>
-
                                       </div>
                                     </div>
                                   </div>
-                                  {/* {questions.answers.map(answer =>
-                                      <div className="a-fixed-left-grid a-spacing-base">
-                                        <div key={answer._id}><b>Answer:</b> {answer.answer}</div>
-                                        <div>By {answer.user} on {moment(answer.createdAt).format('LL')}</div>
-
-                                      </div>
-                                    )} */}
                                   {questions.answers.map(answer =>
-                                    <div className="a-fixed-left-grid a-spacing-base">
+                                    <div key={answer._id} className="a-fixed-left-grid a-spacing-base">
                                       <div className="a-fixed-left-grid-inner" style={{ "paddingLeft": "100px" }}>
 
 
-                                        <div key={answer._id} className="a-fixed-left-grid-col a-col-left" style={{ "width": "100px", "marginLeft": "-100px", "float": "left" }}>
+                                        <div className="a-fixed-left-grid-col a-col-left" style={{ "width": "100px", "marginLeft": "-100px", "float": "left" }}>
                                           <span className="a-text-bold">Answer:</span>
                                         </div>
                                         <div className="a-fixed-left-grid-col a-col-right" style={{ "paddingLeft": "0%", "float": "left" }}>
