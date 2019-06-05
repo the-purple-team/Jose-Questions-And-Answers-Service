@@ -56,6 +56,7 @@ const getProductQuestions = (id, callback) => {
 const updateQuestionVote = (question_Id, body, callback) => {
 	const _id = body.product;
 	const vote = body.vote;
+	console.log(_id, `LINE 58 SCHEMA`)
 	// find productID
 	questions.findById(_id, (err, doc) => {
 		// iterate through the questions and find question_id

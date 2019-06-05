@@ -34,20 +34,21 @@ class Search extends Component {
 				this.setState({ searchResult: result });
 				console.log(this.state, `result of search query`);
 			}
-		}); // setting state
+		});
 	}
 
 	render() {
 		return (
 			<div className="a-section a-spacing-base askBtfSearchFormLabel askAutocomplete">
-			<div className="a-search a-span12">
+			{/* <div className="a-search a-span12">
 				<i className="fa fa-search a-icon a-icon-search"></i>
 				<input type="search" maxLength="150" autoComplete="off" placeholder="Have a question? Search for answers"
 					name="askQuestionText" className="a-input-text a-span12 askBtfSearchTextInput askBtfSearchPostTextInput askAutocompleteTextInput"
 					value={this.state.search}
 					onChange={(e) => this.handleChange(e)}
 				/>
-			</div>
+			</div> */}
+			test
 			</div>
 		)
 	}
