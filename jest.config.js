@@ -5,6 +5,9 @@ module.exports = {
   "<rootDir>/src",
   "<rootDir>/node_modules"
  ],
+  moduleNameMapper: {
+    "\\.(css|less)$": "<rootDir>/client/src/__mock__/styleMock.js"
+  },
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"], // <-- this allows babel to load only the node modules I need (which is lodash-es) and ignore the rest
   collectCoverage: true,
   // collectCoverageFrom: [

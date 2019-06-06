@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import axios from 'axios';
 // import dummy from '../../dummydata.js';
 import moment from 'moment';
@@ -180,4 +180,5 @@ class Questions extends React.Component {
   }
 }
 
-ReactDOM.render(<Questions />, document.getElementById('App'));
+// ReactDOM.render(<Questions />, document.getElementById('App'));
+export default Questions;
