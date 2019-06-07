@@ -15,11 +15,14 @@
 1. [Development](#development) -->
 
 
-## API
-  ## GET all questions per product
-/products/:productId
 
-succesful data:
+## GET all questions per product
+# endpoint
+```sh
+/products/:productId
+```
+
+# Successful API response containing :productId data:
 ```sh
 {
   "product": 1,
@@ -38,11 +41,12 @@ succesful data:
 ```
 
 ## POST vote on a question (add or subtract)
+  # endpoint:
 ```sh
 /ask/vote/question/:question_id
 ```
+ # Successful API response contains the question object that was voted on:
 ```sh
-API call returns the question object:
 {
     "answers": [
         {
