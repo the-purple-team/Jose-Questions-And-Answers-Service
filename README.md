@@ -17,12 +17,12 @@
 
 
 ## GET all questions per product
-# endpoint
+### endpoint
 ```sh
 /products/:productId
 ```
 
-# Successful API response containing :productId data:
+### Successful API response containing :productId data:
 ```sh
 {
   "product": 1,
@@ -41,11 +41,11 @@
 ```
 
 ## POST vote on a question (add or subtract)
-  # endpoint:
+  ### endpoint:
 ```sh
 /ask/vote/question/:question_id
 ```
- # Successful API response contains the question object that was voted on:
+ ### Successful API response contains the question object that was voted on:
 ```sh
 {
     "answers": [
