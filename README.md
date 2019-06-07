@@ -37,18 +37,38 @@ succesful data:
 }
 ```
 
-## PATCH the number of votes (add or subtract)
-/questions/votes/:productId
-
-## POST question
-/questions/add
+## POST the number of votes (add or subtract)
+```sh
+/ask/vote/question/:question_id
+```
+```sh
+API call returns the question object:
+{
+    "answers": [
+        {
+            "_id": "5cef652a3d45e906f96a6736",
+            "user": "Lenard",
+            "answer": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.",
+            "createdAt": "2018-07-20T22:52:42.000Z"
+        },
+        {
+            "_id": "5cef652a3d45e906f96a6735",
+            "user": "Rowe",
+            "answer": "Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+            "createdAt": "2018-08-27T19:32:17.000Z"
+        }
+    ],
+    "_id": "5cef652a3d45e906f96a6734",
+    "question_id": 1,
+    "question": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci?",
+    "votes": 0
+}
+```
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node >=6.13.0
+- Mongo
 
 ## Development
 
@@ -57,7 +77,24 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
+```
+### Seeding Database
+```sh
+npm run seedfeed
+```
+
+### Run server
+```sh
+npm run start-dev
+```
+Using npm run start-dev requires that you have nodemon installed. You may install nodemon globaly by using
+```sh
+npm install -g nodemon
+```
+
+Nodemon can also be installed locally as a dev dependency:
+```sh
+npn install --save--dev nodemon
 ```
 
