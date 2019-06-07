@@ -37,7 +37,7 @@ succesful data:
 }
 ```
 
-## POST the number of votes (add or subtract)
+## POST vote on a question (add or subtract)
 ```sh
 /ask/vote/question/:question_id
 ```
