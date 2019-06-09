@@ -3,10 +3,12 @@ import React from "react";
 import axios from "axios";
 // import dummy from '../../dummydata.js';
 import moment from "moment";
-import Search from "./components/Search.jsx";
-import "./main.css";
+import Search from "./Search.jsx";
+import "../main.css";
 
-class Questions extends React.Component {
+import Questions from './Questions.jsx';
+
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -87,9 +89,10 @@ class Questions extends React.Component {
                   <h3>Enter a product ID in url</h3>
                 ) : (
                   <div
-                    className="a-section a-spacing-none askBtfTopQuestionsContainer"
-                    style={{ textAlign: "center" }}
+                  className="a-section a-spacing-none askBtfTopQuestionsContainer"
+                  style={{ textAlign: "center" }}
                   >
+                  <Questions questions={this.state.product.questions}/>
                     <span className="askTopQandA">
                       <div className="a-section askTeaserQuestions">
                         {this.state.product.questions.length === 0 ? (
@@ -109,6 +112,7 @@ class Questions extends React.Component {
                             </div>
                           </div>
                         ) : (
+                          
                           this.state.product.questions.map(questions => (
                             <div
                               key={questions._id}
@@ -288,4 +292,4 @@ class Questions extends React.Component {
 }
 
 // ReactDOM.render(<Questions />, document.getElementById('App'));
-export default Questions;
+export default App;
