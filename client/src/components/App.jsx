@@ -84,6 +84,7 @@ class App extends React.Component {
                   <div className="a-section askBtfSearchViewContent">
                     <Search questions={data} />
                   </div>
+                
                 </div>
                 {JSON.stringify(product) === "{}" ? (
                   <h3>Enter a product ID in url</h3>
@@ -92,8 +93,8 @@ class App extends React.Component {
                   className="a-section a-spacing-none askBtfTopQuestionsContainer"
                   style={{ textAlign: "center" }}
                   >
-                  <Questions questions={this.state.product.questions}/>
-                    <span className="askTopQandA">
+                  
+                    {/* <span className=""> */}
                       <div className="a-section askTeaserQuestions">
                         {this.state.product.questions.length === 0 ? (
                           <div className="askQuestionExample">
@@ -111,7 +112,8 @@ class App extends React.Component {
                               item?
                             </div>
                           </div>
-                        ) : (
+                        ) : 
+                        (
                           
                           this.state.product.questions.map(questions => (
                             <div
@@ -278,7 +280,8 @@ class App extends React.Component {
                           ))
                         )}
                       </div>
-                    </span>
+                      {/* <Questions questions={this.state.product.questions}/> */}
+                    {/* </span> */}
                   </div>
                 )}
               </div>
