@@ -13,6 +13,8 @@ module.exports = {
     "src/reducers/**/*.ts?(x)",
     "src/reducers/**/*.js?(x)"
   ],
+  verbose: true,
   // coverageDirectory: "./coverage",
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
   coverageReporters: ["json", "lcov", "text"]
 };

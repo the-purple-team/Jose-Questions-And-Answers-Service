@@ -31,18 +31,6 @@ const questionNAnswersSchema = mongoose.Schema({
 const questions = mongoose.model("questions", questionNAnswersSchema);
 
 const getProductQuestions = (id, callback) => {
-  // make query to mongodb to find the Product by id
-  // id = Number(id);
-
-  //----
-  // questions.find({ product: id}, (err, data) => {
-  // 		if (err) {
-  // 				callback(err);
-  // 		}
-  // 		// return array containing all data
-  // 		callback(data[0]);
-  // });
-  //-----\
 
   questions.find({ product: id }).exec((err, data) => {
     if (err) {
@@ -59,7 +47,6 @@ const getProductQuestions = (id, callback) => {
 const updateQuestionVote = (question_Id, body, callback) => {
   const _id = body.product;
   const vote = body.vote;
-  console.log(_id, `LINE 58 SCHEMA`);
   // find productID
   questions.findById(_id, (err, doc) => {
     // iterate through the questions and find question_id

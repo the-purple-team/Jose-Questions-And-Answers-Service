@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Questions from './App.jsx';
+import App from './components/App.jsx';
 
 
-ReactDOM.render(<Questions />, document.getElementById('App'));
+ReactDOM.render(<App />, document.getElementById('App'));
