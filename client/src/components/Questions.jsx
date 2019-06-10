@@ -2,20 +2,6 @@ import React, { Component } from "react";
 import Votes from "./Votes.jsx";
 import Answers from "./Answers.jsx";
 
-// props input is object with:
-//   {
-//     product: {
-//       questions: [
-//         {
-//           question_id,
-//           answers:[],
-//           votes
-//         }
-//       ],
-//       product_id
-//     }
-//   }
-
 class Questions extends Component {
   constructor(props) {
     super(props);
@@ -25,20 +11,26 @@ class Questions extends Component {
   }
 
   render() {
-    let { questions } = this.props;
+    let { question } = this.props;
     return (
-      <div className="a-section askTeaserQuestions">
-        {questions.map(question => (
-          <div key={question._id} className="a-fixed-left-grid a-spacing-base">
-              <div
-                className="a-fixed-left-grid-inner"
-                style={{ paddingLeft: "65px" }}
-              >
-                <Votes votes={question.votes} />
-                <Answers questions={question} />
-              </div>
+      <div key={question._id} className="a-fixed-left-grid a-spacing-small">
+        <div
+          className="a-fixed-left-grid-inner"
+          style={{ paddingLeft: "100px" }}
+        >
+          <div
+            className="a-fixed-left-grid-col a-col-left"
+            style={{ width: "100px", marginLeft: "-100px", float: "left" }}
+          >
+            <span className="a-text-bold">Questions:</span>
           </div>
-        ))}
+          <div
+            className="a-fixed-left-grid-col a-col-right"
+            style={{ paddingLeft: "0%", float: "left" }}
+          >
+            <span className="a-declarative">{question.question}</span>
+          </div>
+        </div>
       </div>
     );
   }

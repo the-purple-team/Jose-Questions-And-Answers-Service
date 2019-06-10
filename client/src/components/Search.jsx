@@ -13,16 +13,13 @@ class Search extends Component {
   // updates the search value
   handleChange(e) {
     let query = e.target.value;
-    console.log(query, `SEARCH VALUE`);
     this.setState({ search: query }, () => {
       let result = [...this.state.searchResult];
-      console.log(result, `EMPTY RESULT?`);
       const { questions } = this.props;
 
       for (let i = 0; i < questions.length; i++) {
         let question = questions[i].question.split(" ");
-        // console.log(question, `line 22`);
-        // if the query is found in the question str
+
         if (
           question.includes(query) &&
           !result.includes(questions[i].question_id)
