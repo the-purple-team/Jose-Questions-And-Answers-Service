@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment';
 
 class Answers extends Component {
   constructor(props) {
@@ -11,11 +12,14 @@ class Answers extends Component {
 
   render() {
     let { answers } = this.props;
+    // deteremine if the length of the answers Array is more than 1
+    // if it's more than one, 
     if (answers.length > 1) {
       // sort answers by creadted and get most recent answer
       answers.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
+      // we want to get the first question in 
     }
     return (
       <>

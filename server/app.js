@@ -4,6 +4,8 @@ const path = require("path");
 const morgan = require("morgan");
 const app = express();
 const db = require("../server/database/schema.js");
+const cors = require('cors');
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -11,13 +13,14 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(cors());
 // SERVER static files
 app.use(express.static(path.join(__dirname + "/../client/dist")));
 
 //allows to serve react files whenever the url Route is changed in the client side.
-app.use("/:id", express.static(path.join(__dirname + "/../client/dist")));
+app.use("/products/:id", express.static(path.join(__dirname + "/../client/dist")));
 
-app.get("/products/:productId", (req, res) => {
+app.get("/questions/product/:productId", (req, res) => {
   // gets all questions for specific productId
   db.getProductQuestions(req.params.productId, data => {
     res.send(data);
