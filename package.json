@@ -10,6 +10,7 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon server/app.js",
+    "start-pro": "node server/app.js",
     "start-dev": "concurrently \" npm run build \" \" npm run start \"",
     "seedfeed": "node server/database/seeding/seedData.js",
     "test": "jest"
