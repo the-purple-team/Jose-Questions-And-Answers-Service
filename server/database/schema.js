@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true&w=majority'
+mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true'
   , {
   useNewUrlParser: true
 });
