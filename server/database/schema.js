@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/QuestionAndAnswers", {
+mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true&w=majority'
+  , {
   useNewUrlParser: true
 });
 
