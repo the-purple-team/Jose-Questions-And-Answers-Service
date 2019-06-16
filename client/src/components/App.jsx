@@ -22,11 +22,12 @@ class App extends React.Component {
 
   componentDidMount() {
     // let id = window.location.pathname;
+    // .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
     let id = window.location.href.split('/')[4] || 1
     console.log(id, `path`)
     if (id !== "/") {
       axios
-        .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
+        .get(`/questions/product/${window.location.href.split('/')[4] || 1}`)
         .then(response => {
           // console.log(response, `this is is going well`)
           console.log(response, `DATA`)
