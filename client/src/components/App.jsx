@@ -25,13 +25,11 @@ class App extends React.Component {
     // with proxy = .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
     // without proxy = .get(`/questions/product/${window.location.href.split('/')[4] || 1}`)
     let id = window.location.href.split('/')[4] || 1
-    console.log(id, `path`)
     if (id !== "/") {
       axios
         .get(`http://ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/questions/product/${window.location.href.split('/')[4] || 1}`)
         .then(response => {
           // console.log(response, `this is is going well`)
-          console.log(response, `DATA`)
           this.setState({ product: response.data });
         })
         .catch(err => {
@@ -73,8 +71,6 @@ class App extends React.Component {
 
   render() {
     const { product } = this.state;
-    // questios array
-    console.log(product, `test`)
     const data = this.state.product.questions;
     return (
       <>
