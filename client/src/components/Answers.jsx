@@ -7,7 +7,7 @@ class Answers extends Component {
     this.state = {
       answers: [this.props.answers[0]],
       // multipleAnswers: [this.props.answers.splice(0,1)]
-      singleAnswer: true
+      
     };
   }
 
