@@ -51,6 +51,7 @@ class App extends React.Component {
         product: product_id
       })
       .then(response => {
+        /////
         const questionId = response.data.question_id;
         const voteValue = response.data.votes;
         const questions = [...this.state.product.questions];
@@ -60,7 +61,21 @@ class App extends React.Component {
             question.votes = voteValue;
           }
         });
-        this.setState({ [questions]: questions });
+        questions.sort((a, b) => {
+          return b.votes - a.votes;
+        });
+        ///// working with response
+
+        // Change State Based on Votes
+        const {product, _id, __v}= this.state.product;
+        
+        const updProduct ={};
+        updProduct.product = product;
+        updProduct._id = _id; 
+        updProduct.__v = __v;
+        updProduct.questions = questions;
+
+        this.setState({ product: updProduct });
       });
   }
 
@@ -158,4 +173,5 @@ class App extends React.Component {
 }
 
 // ReactDOM.render(<Questions />, document.getElementById('App'));
+
 export default App;
