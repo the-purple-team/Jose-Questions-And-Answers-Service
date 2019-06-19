@@ -238,3 +238,19 @@ hr {
 .a-col-left {
   position: relative;
 }
+
+.mystyle {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.a-color-tertiary {
+  color: #767676!important
+}
+
+.a-hyperlink-effect {
+  color: blue;
+}

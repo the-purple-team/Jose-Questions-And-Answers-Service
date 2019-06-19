@@ -20,15 +20,16 @@ class Questions extends Component {
         >
           <div
             className="a-fixed-left-grid-col a-col-left"
-            style={{ width: "100px", marginLeft: "-100px", float: "left" }}
+            style={{ width: "100px", marginLeft: "-100px", float: "left", textAlign:'left'}}
           >
             <span className="a-text-bold">Questions:</span>
           </div>
           <div
             className="a-fixed-left-grid-col a-col-right"
-            style={{ paddingLeft: "0%", float: "left" }}
+            style={{ paddingLeft: "0%", float: "left", textAlign:'left' }}
           >
-            <span className="a-declarative">{question.question}</span>
+            <a className="a-declarative a-hyperlink-effect" href="#">{question.question}</a>
+            {/* <span className="a-declarative">{question.question}</span> */}
           </div>
         </div>
       </div>
