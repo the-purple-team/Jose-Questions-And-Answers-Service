@@ -17,6 +17,7 @@ class App extends React.Component {
       product: {},
       searchRequest: false,
       searchResult: [],
+      searchQuery: ''
     };
     this.changeVote = this.changeVote.bind(this);
     this.searchQueryResults = this.searchQueryResults.bind(this);
@@ -83,17 +84,19 @@ class App extends React.Component {
       });
   }
 
-  searchQueryResults(result, searchQuery) {
+  searchQueryResults(result, query) {
     // if the search query is empty
-    if (searchQuery === '') {
+    if (query === '') {
       this.setState({
         searchRequest: false,
-        searchResult: result
+        searchResult: result,
+        searchQuery: ''
       })
     } else {
       this.setState({
         searchRequest: true,
-        searchResult: result
+        searchResult: result,
+        searchQuery: query
       }, () => {
       });
     }
@@ -126,7 +129,7 @@ class App extends React.Component {
                 </div>
               </div>
               {this.state.searchRequest ? (
-                <SearchResults searchResult={this.state.searchResult}/>
+                <SearchResults searchResult={this.state.searchResult} query={this.state.searchQuery}/>
               ) : (
                 <div
                   className="a-section a-spacing-none askBtfTopQuestionsContainer"

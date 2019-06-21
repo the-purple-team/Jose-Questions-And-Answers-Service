@@ -18,24 +18,24 @@ class Search extends Component {
   // handle search input
   handleSearchChange(event) {
     let query = event.target.value;
-    // if (query === "") {
-    //   // removes previous time
-    //   if (this.state.typingTimeout) {
-    //     clearTimeout(this.state.typingTimeout);
-    //   }
+    if (query === "") {
+      // removes previous time
+      if (this.state.typingTimeout) {
+        clearTimeout(this.state.typingTimeout);
+      }
 
-    //   this.setState({
-    //     search: query,
-    //     typing: false,
-    //     searchResult: [],
-    //     typingTimeout: setTimeout(() => {
-    //       this.props.searchQueryResults(
-    //         this.state.searchResult,
-    //         this.state.search
-    //       );
-    //     }, 1000)
-    //   });
-    // } else {
+      this.setState({
+        search: query,
+        typing: false,
+        searchResult: [],
+        typingTimeout: setTimeout(() => {
+          this.props.searchQueryResults(
+            this.state.searchResult,
+            this.state.search
+          );
+        }, 1000)
+      });
+    } else {
       if (this.state.typingTimeout) {
         clearTimeout(this.state.typingTimeout);
       }
@@ -47,7 +47,7 @@ class Search extends Component {
           this.findSearchQuery(query);
         }, 1000)
       });
-    // }
+    }
   }
 
   findSearchQuery(query) {

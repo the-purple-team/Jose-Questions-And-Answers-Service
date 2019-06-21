@@ -143,6 +143,7 @@ input[type="Search"]:focus {
   border-right: 11px solid transparent;
   border-top: 0px;
   border-bottom: 11px solid gray;
+  outline: none;
 }
 .arrow-up:hover {
   width: 0;
@@ -160,6 +161,7 @@ input[type="Search"]:focus {
   border-right: 11px solid transparent;
   border-bottom: 0px;
   border-top: 11px solid grey;
+  outline: none;
 }
 .arrow-down:hover {
   width: 0;
@@ -171,13 +173,6 @@ input[type="Search"]:focus {
   cursor: pointer;
 }
 
-body:after {
-  display: none;
-  content: url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_down_arrow._CB320707210_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_up_arrow._CB320707204_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/highlighted_down_arrow._CB320707210_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/highlighted_up_arrow._CB320707204_.png");
-}
 
 hr {
   background-color: transparent;
