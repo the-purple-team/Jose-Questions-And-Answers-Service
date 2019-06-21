@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-// import Collapse from './Collapse.jsx';
+
 import CollapseAnswers from './CollapseAnswers.jsx';
 
 class Answers extends Component {
@@ -8,21 +8,11 @@ class Answers extends Component {
     super(props);
     this.state = {
       answers: [this.props.answers[0]],
-      multipleAnswers: [this.props.answers.splice(0,1)],
       show: true
     };
   }
 
-  displayAllAnswers() {
-    // will set state to all answers in props
-    // if state {singleAnswer} is true
-      // set state {answers} to all answer this.props.answer
-    // else 
-      // set state {answers} to single answer
-  }
-
   render() {
-    // let { answers } = this.props;
     const {answers} = this.state;
     const nthAnswers = this.props.answers.length - 1;
     

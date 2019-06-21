@@ -12,54 +12,68 @@ class Search extends Component {
 
     // this.handleChange = this.handleChange.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.findSearchQuery = this.findSearchQuery.bind(this);
   }
 
   // handle search input
   handleSearchChange(event) {
     let query = event.target.value;
-    if (query === '') {
-      this.setState({
-        search: query
-      }, () => {
-        this.props.searchQueryResults(this.state.searchResult, this.state.search);
-      })
-    } else {
+    // if (query === "") {
+    //   // removes previous time
+    //   if (this.state.typingTimeout) {
+    //     clearTimeout(this.state.typingTimeout);
+    //   }
 
-      // removes previous time
+    //   this.setState({
+    //     search: query,
+    //     typing: false,
+    //     searchResult: [],
+    //     typingTimeout: setTimeout(() => {
+    //       this.props.searchQueryResults(
+    //         this.state.searchResult,
+    //         this.state.search
+    //       );
+    //     }, 1000)
+    //   });
+    // } else {
       if (this.state.typingTimeout) {
         clearTimeout(this.state.typingTimeout);
       }
-  
+
       this.setState({
         search: query,
         typing: false,
         typingTimeout: setTimeout(() => {
-        
-          const result = [...this.state.searchResult];
-          const { questions } = this.props;
-          // search any available question with query String
-          // debugger;
-          for (let i = 0; i < questions.length; i++) {
-            let question = questions[i].question.split(" ");
-    
-            if (
-              question.includes(query) &&
-              !result.includes(questions[i].question_id)
-            ) {
-              // insert the question into the result's array if it isn't already included
-              result.push(questions[i]);
-            }
-          }
-          this.setState({
-            searchResult: result
-          })
-  
-          this.props.searchQueryResults(this.state.searchResult, this.state.search);
+          this.findSearchQuery(query);
         }, 1000)
       });
-    }
+    // }
   }
 
+  findSearchQuery(query) {
+
+    const result = [...this.state.searchResult];
+    const { questions } = this.props;
+    // search any available question with query String
+    for (let i = 0; i < questions.length; i++) {
+      let question = questions[i].question.split(" ");
+      
+      if (
+        question.includes(query) &&
+        !result.includes(questions[i].question_id)
+      ) {
+        // insert the question into the result's array if it isn't already included
+        result.push(questions[i]);
+      }
+    }
+    this.setState({
+      searchResult: result
+    }, () => {
+      this.props.searchQueryResults(this.state.searchResult, this.state.search);
+    });
+  }
+
+  
   render() {
     return (
       <div className="a-section a-spacing-base askBtfSearchFormLabel askAutocomplete">

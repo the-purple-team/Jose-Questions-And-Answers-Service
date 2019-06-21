@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import moment from 'moment';
 function SearchResults(props) {
   if (!props.searchResult.length) {
-    console.log(props.searchResult, `no length`)
     return (
       <h3>result was empty</h3>
     )
   }
-  console.log(props.searchResult, `has length`)
   return (
     <div>
       <div>

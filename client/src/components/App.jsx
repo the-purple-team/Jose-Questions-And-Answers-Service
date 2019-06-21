@@ -1,7 +1,5 @@
 import React from "react";
-// import ReactDOM from 'react-dom';
 import axios from "axios";
-// import dummy from '../../dummydata.js';
 import moment from "moment";
 import Search from "./Search.jsx";
 import "../main.css";
@@ -86,17 +84,13 @@ class App extends React.Component {
   }
 
   searchQueryResults(result, searchQuery) {
-    // if this function is inbo
-  
-
+    // if the search query is empty
     if (searchQuery === '') {
       this.setState({
-        searchRequest: false
-      }, () => {
-        console.log('test was set for empty string');
+        searchRequest: false,
+        searchResult: result
       })
     } else {
-
       this.setState({
         searchRequest: true,
         searchResult: result
@@ -117,7 +111,6 @@ class App extends React.Component {
       )
     }
 
-    console.log(this.state.searchResult, `search query result line 120 <App />`)
     return (
       <>
         <div id="ask_lazy_load_div">
