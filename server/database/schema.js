@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
-mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true'
+// mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true'
+//   , {
+//   useNewUrlParser: true
+// });
+
+mongoose.connect('mongodb://localhost:27017/QuestionAndAnswers'
   , {
   useNewUrlParser: true
 });

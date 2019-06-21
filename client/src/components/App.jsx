@@ -9,15 +9,19 @@ import "../main.css";
 import Votes from "./Votes.jsx";
 import Questions from "./Questions.jsx";
 import Answers from "./Answers.jsx";
+import SearchResults from './SearchResults.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: {},
-      searchRequest: false
+      searchRequest: false,
+      searchResult: [],
     };
     this.changeVote = this.changeVote.bind(this);
+    this.searchQueryResults = this.searchQueryResults.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +33,7 @@ class App extends React.Component {
     let id = window.location.href.split('/')[4] || 1
     if (id !== "/") {
       axios
-        .get(`/questions/product/${window.location.href.split('/')[4] || 1}`)
+        .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
         .then(response => {
           // console.log(response, `this is is going well`)
           this.setState({ product: response.data });
@@ -81,13 +85,39 @@ class App extends React.Component {
       });
   }
 
-  searchQueryAndQuestions(searchResult) {
+  searchQueryResults(result, searchQuery) {
     // if this function is inbo
+  
+
+    if (searchQuery === '') {
+      this.setState({
+        searchRequest: false
+      }, () => {
+        console.log('test was set for empty string');
+      })
+    } else {
+
+      this.setState({
+        searchRequest: true,
+        searchResult: result
+      }, () => {
+      });
+    }
   }
+
 
   render() {
     const { product } = this.state;
     const data = this.state.product.questions;
+
+    if (JSON.stringify(product) === "{}") {
+      return (
+        <>
+        </>
+      )
+    }
+
+    console.log(this.state.searchResult, `search query result line 120 <App />`)
     return (
       <>
         <div id="ask_lazy_load_div">
@@ -99,11 +129,11 @@ class App extends React.Component {
             <div className="askWidgetQuestions askLiveSearchHide">
               <div className="a-row a-spacing-small a-spacing-top-base">
                 <div className="a-section askBtfSearchViewContent">
-                  <Search questions={data} />
+                  <Search questions={data} searchQueryResults={this.searchQueryResults}/>
                 </div>
               </div>
-              {JSON.stringify(product) === "{}" ? (
-                <h3 />
+              {this.state.searchRequest ? (
+                <SearchResults searchResult={this.state.searchResult}/>
               ) : (
                 <div
                   className="a-section a-spacing-none askBtfTopQuestionsContainer"
