@@ -10,7 +10,8 @@ class CollapseAnswers extends React.Component {
     this.collapsAnswers = this.collapsAnswers.bind(this);
   }
 
-  collapsAnswers() {
+  collapsAnswers(event) {
+    event.preventDefault();
     if (this.state.hideQuestions) {
       this.setState({
         hideQuestions: false
@@ -30,7 +31,7 @@ class CollapseAnswers extends React.Component {
             <a
               className="a-hyperlink-effect"
               href="#"
-              onClick={() => this.collapsAnswers()}
+              onClick={(e) => this.collapsAnswers(e)}
             >
               see more answers({this.props.answersExceptOne.length})
             </a>
@@ -63,7 +64,7 @@ class CollapseAnswers extends React.Component {
             <button
               className="a-button-input a-button"
               type="button"
-              onClick={() => this.collapsAnswers()}
+              onClick={(e) => this.collapsAnswers(e)}
             >
               Collapse all answers
             </button>
