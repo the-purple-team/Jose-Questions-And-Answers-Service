@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
-// mongoose.connect('mongodb+srv://rzdbUser:$28r[}@cluster0-ing7x.mongodb.net/test?retryWrites=true'
+
+// working with env variables
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGOURI, {
+  useNewUrlParser: true
+});
+
+
+// mongoose.connect('mongodb://localhost:27017/QuestionAndAnswers'
 //   , {
 //   useNewUrlParser: true
 // });
 
-mongoose.connect('mongodb://localhost:27017/QuestionAndAnswers'
-  , {
-  useNewUrlParser: true
-});
-
-// const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

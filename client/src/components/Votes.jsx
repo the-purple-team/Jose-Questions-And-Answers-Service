@@ -3,9 +3,6 @@ import React, { Component } from "react";
 class Votes extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      vote: ""
-    };
   }
 
   updateVote(event) {
