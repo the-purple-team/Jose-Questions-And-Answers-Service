@@ -32,7 +32,7 @@ class App extends React.Component {
     let id = window.location.href.split('/')[4] || 1
     if (id !== "/") {
       axios
-        .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
+        .get(`http://ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/questions/product/${window.location.href.split('/')[4] || 1}`)
         .then(response => {
           // console.log(response, `this is is going well`)
           this.setState({ product: response.data });
@@ -51,7 +51,7 @@ class App extends React.Component {
 
     // makes POST request to update the question's vote count
     axios
-      .post(`http://localhost:3000/ask/vote/question/${question_id}`, {
+      .post(`ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/ask/vote/question/${question_id}`, {
         vote: voteValue,
         product: product_id
       })
