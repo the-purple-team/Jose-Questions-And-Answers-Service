@@ -1,5 +1,5 @@
 const mongo = require("../schema");
-
+require('dotenv').config()
 const fakeProductData = [
   {
     product: 1,

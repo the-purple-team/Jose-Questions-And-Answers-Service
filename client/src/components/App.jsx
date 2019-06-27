@@ -1,7 +1,5 @@
 import React from "react";
-// import ReactDOM from 'react-dom';
 import axios from "axios";
-// import dummy from '../../dummydata.js';
 import moment from "moment";
 import Search from "./Search.jsx";
 import "../main.css";
@@ -9,27 +7,34 @@ import "../main.css";
 import Votes from "./Votes.jsx";
 import Questions from "./Questions.jsx";
 import Answers from "./Answers.jsx";
+import SearchResults from './SearchResults.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: {},
-      searchRequest: false
+      searchRequest: false,
+      searchResult: [],
+      searchQuery: ''
     };
     this.changeVote = this.changeVote.bind(this);
+    this.searchQueryResults = this.searchQueryResults.bind(this);
   }
 
   componentDidMount() {
     // let id = window.location.pathname;
+    // with proxy = .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
+    // without proxy = .get(`/questions/product/${window.location.href.split('/')[4] || 1}`)
+  
+    // with AWS = .get(`http://ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/questions/product/${window.location.href.split('/')[4] || 1}`)
     let id = window.location.href.split('/')[4] || 1
-    console.log(id, `path`)
     if (id !== "/") {
       axios
-        .get(`http://localhost:3000/questions/product/${window.location.href.split('/')[4] || 1}`)
+        .get(`http://ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/questions/product/${window.location.href.split('/')[4] || 1}`)
         .then(response => {
           // console.log(response, `this is is going well`)
-          console.log(response, `DATA`)
           this.setState({ product: response.data });
         })
         .catch(err => {
@@ -46,12 +51,12 @@ class App extends React.Component {
 
     // makes POST request to update the question's vote count
     axios
-      .post(`/ask/vote/question/${question_id}`, {
+      .post(`ec2-18-220-91-195.us-east-2.compute.amazonaws.com:80/ask/vote/question/${question_id}`, {
         vote: voteValue,
         product: product_id
       })
       .then(response => {
-        console.log(response, `VOTES RESPONSE FROM SERVER`);
+        /////
         const questionId = response.data.question_id;
         const voteValue = response.data.votes;
         const questions = [...this.state.product.questions];
@@ -61,19 +66,54 @@ class App extends React.Component {
             question.votes = voteValue;
           }
         });
-        this.setState({ [questions]: questions });
+        questions.sort((a, b) => {
+          return b.votes - a.votes;
+        });
+        ///// working with response
+
+        // Change State Based on Votes
+        const {product, _id, __v}= this.state.product;
+        
+        const updProduct ={};
+        updProduct.product = product;
+        updProduct._id = _id; 
+        updProduct.__v = __v;
+        updProduct.questions = questions;
+
+        this.setState({ product: updProduct });
       });
   }
 
-  searchQueryAndQuestions(searchResult) {
-    // if this function is inbo
+  searchQueryResults(result, query) {
+    // if the search query is empty
+    if (query === '') {
+      this.setState({
+        searchRequest: false,
+        searchResult: result,
+        searchQuery: ''
+      })
+    } else {
+      this.setState({
+        searchRequest: true,
+        searchResult: result,
+        searchQuery: query
+      }, () => {
+      });
+    }
   }
+
 
   render() {
     const { product } = this.state;
-    // questios array
-    console.log(product, `test`)
     const data = this.state.product.questions;
+
+    if (JSON.stringify(product) === "{}") {
+      return (
+        <>
+        </>
+      )
+    }
+
     return (
       <>
         <div id="ask_lazy_load_div">
@@ -85,11 +125,11 @@ class App extends React.Component {
             <div className="askWidgetQuestions askLiveSearchHide">
               <div className="a-row a-spacing-small a-spacing-top-base">
                 <div className="a-section askBtfSearchViewContent">
-                  <Search questions={data} />
+                  <Search questions={data} searchQueryResults={this.searchQueryResults}/>
                 </div>
               </div>
-              {JSON.stringify(product) === "{}" ? (
-                <h3 />
+              {this.state.searchRequest ? (
+                <SearchResults searchResult={this.state.searchResult} query={this.state.searchQuery}/>
               ) : (
                 <div
                   className="a-section a-spacing-none askBtfTopQuestionsContainer"
@@ -161,4 +201,5 @@ class App extends React.Component {
 }
 
 // ReactDOM.render(<Questions />, document.getElementById('App'));
+
 export default App;

@@ -5,38 +5,75 @@ class Search extends Component {
     super(props);
     this.state = {
       search: "",
-      searchResult: []
+      searchResult: [],
+      typing: false,
+      typingTimeout: 0
     };
-    this.handleChange = this.handleChange.bind(this);
+
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.findSearchQuery = this.findSearchQuery.bind(this);
   }
 
-  // updates the search value
-  handleChange(e) {
-    let query = e.target.value;
-    this.setState({ search: query }, () => {
-      let result = [...this.state.searchResult];
-      const { questions } = this.props;
-
-      for (let i = 0; i < questions.length; i++) {
-        let question = questions[i].question.split(" ");
-
-        if (
-          question.includes(query) &&
-          !result.includes(questions[i].question_id)
-        ) {
-          // insert the question into the result's array if it isn't already included
-          console.log(questions[i], `question with query`);
-          result.push(questions[i]);
-        }
+  // handle search input
+  handleSearchChange(event) {
+    let query = event.target.value;
+    if (query === "") {
+      // removes previous time
+      if (this.state.typingTimeout) {
+        clearTimeout(this.state.typingTimeout);
       }
 
-      if (result.length) {
-        this.setState({ searchResult: result });
-        console.log(this.state, `result of search query`);
+      this.setState({
+        search: query,
+        typing: false,
+        searchResult: [],
+        typingTimeout: setTimeout(() => {
+          this.props.searchQueryResults(
+            this.state.searchResult,
+            this.state.search
+          );
+        }, 1000)
+      });
+    } else {
+      if (this.state.typingTimeout) {
+        clearTimeout(this.state.typingTimeout);
       }
+
+      this.setState({
+        search: query,
+        typing: false,
+        typingTimeout: setTimeout(() => {
+          this.findSearchQuery(query);
+        }, 1000)
+      });
+    }
+  }
+
+  findSearchQuery(query) {
+
+    const result = [...this.state.searchResult];
+    const { questions } = this.props;
+    // search any available question with query String
+    for (let i = 0; i < questions.length; i++) {
+      let question = questions[i].question.split(" ");
+      
+      if (
+        question.includes(query) &&
+        !result.includes(questions[i].question_id)
+      ) {
+        // insert the question into the result's array if it isn't already included
+        result.push(questions[i]);
+      }
+    }
+    this.setState({
+      searchResult: result
+    }, () => {
+      this.props.searchQueryResults(this.state.searchResult, this.state.search);
     });
   }
 
+  
   render() {
     return (
       <div className="a-section a-spacing-base askBtfSearchFormLabel askAutocomplete">
@@ -50,7 +87,8 @@ class Search extends Component {
             name="askQuestionText"
             className="a-input-text a-span12 askBtfSearchTextInput askBtfSearchPostTextInput askAutocompleteTextInput"
             value={this.state.search}
-            onChange={e => this.handleChange(e)}
+            // onChange={e => this.handleChange(e)}
+            onChange={e => this.handleSearchChange(e)}
           />
         </div>
       </div>

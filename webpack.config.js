@@ -4,12 +4,12 @@ const DIST_DIR = path.join(__dirname, 'client/dist');
 // entry: `${SRC_DIR}/App.jsx` // changed to have index.js be entry
 module.exports = {
   entry: `${SRC_DIR}/index.js`,
-  mode: 'development',
+  mode: 'production',
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-
+  performance: { hints: false },
   module: {
     rules: [
       {

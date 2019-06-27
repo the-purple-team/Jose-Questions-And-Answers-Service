@@ -1,55 +1,54 @@
 import React, { Component } from "react";
-import moment from 'moment';
+import moment from "moment";
+
+import CollapseAnswers from './CollapseAnswers.jsx';
 
 class Answers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      singleAnswer: [],
-      multipleAnswers: []
+      answers: [this.props.answers[0]],
+      show: true
     };
   }
 
   render() {
-    let { answers } = this.props;
-    // deteremine if the length of the answers Array is more than 1
-    // if it's more than one, 
-    if (answers.length > 1) {
-      // sort answers by creadted and get most recent answer
-      answers.sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      });
-      // we want to get the first question in 
-    }
+    const {answers} = this.state;
+    const nthAnswers = this.props.answers.length - 1;
+    
+    // all answers except the first 1
+    const answerForCollaps = [...this.props.answers];
+    answerForCollaps.splice(0,1);
     return (
-      <>
-        {answers.map(answer => (
-          <div key={answer._id} className="a-fixed-left-grid a-spacing-base">
+        <div className="a-fixed-left-grid a-spacing-base">
+          <div
+            className="a-fixed-left-grid-inner"
+            style={{ paddingLeft: "100px" }}
+          >
             <div
-              className="a-fixed-left-grid-inner"
-              style={{ paddingLeft: "100px" }}
+              className="a-fixed-left-grid-col a-col-left"
+              style={{ width: "100px", marginLeft: "-100px", float: "left" , textAlign: 'left'}}
             >
-              <div
-                className="a-fixed-left-grid-col a-col-left"
-                style={{ width: "100px", marginLeft: "-100px", float: "left" }}
-              >
-                <span className="a-text-bold">Answer:</span>
-              </div>
-
-              <div
+              <span className="a-text-bold">Answer:</span>
+            </div>
+            {answers.map(answer => (
+              <div key={answer._id}
                 className="a-fixed-left-grid-col a-col-right"
-                style={{ paddingLeft: "0%", float: "left" }}
+                style={{ paddingLeft: "0%", float: "left", textAlign: 'left' }}
               >
                 <span>{answer.answer}</span>
                 <br />
-                <span>
+                <span className="a-color-tertiary">
                   By {answer.user} on {moment(answer.createdAt).format("LL")}
                 </span>
-              </div>
-            </div>
+                <br />
+                <div>
+                  <CollapseAnswers nthAnswers={nthAnswers} id={answer._id} answersExceptOne={answerForCollaps}/>
+                </div>
+              </div> 
+            ))}
           </div>
-        ))}
-      </>
+        </div>
     );
   }
 }

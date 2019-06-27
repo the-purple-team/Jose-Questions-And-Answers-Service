@@ -6,3 +6,6 @@ bundle.js
 
 #vscode
 .vscode 
+
+# env 
+.env

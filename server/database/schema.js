@@ -1,9 +1,19 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/QuestionAndAnswers", {
+
+// working with env variables
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGOURI, {
   useNewUrlParser: true
 });
 
-// const Schema = mongoose.Schema;
+
+// mongoose.connect('mongodb://localhost:27017/QuestionAndAnswers'
+//   , {
+//   useNewUrlParser: true
+// });
+
+const Schema = mongoose.Schema;
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

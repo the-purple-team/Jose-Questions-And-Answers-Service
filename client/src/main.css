@@ -3,16 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
+#Questions {
+  width: 100%;
+  margin-top: 20px;
+  float: left;
+}
 body {
   font-size: 13px;
   line-height: 19px;
   color: #111;
+  font-family: verdana,arial,helvetica,sans-serif;
 }
 
 h2 {
@@ -25,12 +32,16 @@ div {
   display: block;
 }
 
+#ask_lazy_load_div {
+  padding: 2px 0 10px 10px;
+}
 .askInlineWidget {
   word-wrap: break-word;
 }
 #ask-btf_feature_div {
   padding: 10px;
 }
+
 .askInlineWidget .vote {
   border-right: 1px solid #ddd;
   text-align: center;
@@ -132,6 +143,7 @@ input[type="Search"]:focus {
   border-right: 11px solid transparent;
   border-top: 0px;
   border-bottom: 11px solid gray;
+  outline: none;
 }
 .arrow-up:hover {
   width: 0;
@@ -149,6 +161,7 @@ input[type="Search"]:focus {
   border-right: 11px solid transparent;
   border-bottom: 0px;
   border-top: 11px solid grey;
+  outline: none;
 }
 .arrow-down:hover {
   width: 0;
@@ -160,13 +173,6 @@ input[type="Search"]:focus {
   cursor: pointer;
 }
 
-body:after {
-  display: none;
-  content: url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_down_arrow._CB320707210_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_up_arrow._CB320707204_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/highlighted_down_arrow._CB320707210_.png")
-    url("https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/highlighted_up_arrow._CB320707204_.png");
-}
 
 hr {
   background-color: transparent;
@@ -238,3 +244,71 @@ hr {
 .a-col-left {
   position: relative;
 }
+
+.mystyle {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.a-color-tertiary {
+  color: #767676!important
+}
+
+.a-hyperlink-effect {
+  color: blue;
+}
+
+.a-spacing-top-small {
+  margin-top: 10px!important;
+}
+
+.a-button-input {
+  border-radius: 3px;
+  margin-top: 10px!important;
+  padding: 5px;
+}
+
+.a-button-toggle:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+.a-button {
+  background:transparent;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.a-button:focus {
+  border: 1px solid rgba(243, 163, 88, 1);
+  box-shadow: 0px 2px 3px rgba(243, 163, 88, 1);
+  outline: 0;
+  background-color: #e7e9ec;
+}
+.a-button-toggle {
+  background: #adb1b8 #a2a6ac #8d9096;
+  background-color: #fff;
+}
+.a-button-toggle .a-button-inner {
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+  background-color: white;
+  background-image: none;
+  height: auto;
+}
+
+.a-search-result-header {
+  display: inline-block;
+  padding: 9px;
+  padding-bottom: 8px;
+  padding-top: 14px;
+}
+
+.a-search-result-header:hover {
+  cursor: pointer;
+  border-bottom: 3px solid #ffa700;
+  cursor: pointer;
+  font-weight: bold;
+}
+
